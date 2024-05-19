@@ -2,6 +2,7 @@ package com.samara.cart.service.controller;
 
 import com.samara.cart.service.bo.cart.CartResponse;
 import com.samara.cart.service.bo.cart.CreateCartRequest;
+import com.samara.cart.service.bo.cart.UpdateCartRequest;
 import com.samara.cart.service.service.CartService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,24 +23,27 @@ public class CartController {
     }
 
 
-//    @GetMapping("/cart")
-//    public ResponseEntity<List<CartResponse>> cart() {
-//        return new ResponseEntity<>(cartService.cart(), HttpStatus.OK);
-//    }
-
-//    @GetMapping("/cart/{userId}")
-//    public ResponseEntity<List<CartResponse>> userCart(@PathVariable Long userId) {
-//        return new ResponseEntity<>(cartService.userCart(), HttpStatus.OK);
-//    }
-
-    @PostMapping("/add-to-cart")
-    public ResponseEntity<CartResponse> addToCart(@RequestBody CreateCartRequest createCartRequest) {
-        return new ResponseEntity<>(cartService.addToCart(createCartRequest), HttpStatus.CREATED);
+    @PostMapping("/{userId}/add-to-cart")
+    public ResponseEntity<CartResponse> addToCart(
+            @RequestBody CreateCartRequest createCartRequest,
+            @PathVariable Long userId
+    ) {
+        return new ResponseEntity<>(cartService.addToCart(createCartRequest, userId), HttpStatus.CREATED);
     }
 
-    @GetMapping("/cart-details/{userId}")
+    @GetMapping("/{userId}/cart-details")
     public ResponseEntity<List<CartResponse>> cartDetails(@PathVariable Long userId) {
         return new ResponseEntity<>(cartService.cartDetails(userId), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{userId}/delete-cart/{productId}")
+    public ResponseEntity<String> deleteCart(@PathVariable Long userId, @PathVariable Long productId) {
+        return new ResponseEntity<>(cartService.deleteCart(userId, productId), HttpStatus.OK);
+    }
+
+    @PutMapping("/{userId}/update-cart/{productId}")
+    public ResponseEntity<CartResponse> updateCartQuantity(@PathVariable Long userId, @PathVariable Long productId, @RequestBody UpdateCartRequest updateCartRequest) {
+        return new ResponseEntity<>(cartService.updateCartQuantity(userId, productId, updateCartRequest), HttpStatus.OK);
     }
 
     @GetMapping("/allMultiValueMap")

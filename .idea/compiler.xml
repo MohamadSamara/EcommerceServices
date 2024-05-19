@@ -12,6 +12,7 @@
         <module name="category-service" />
         <module name="inventory-service" />
         <module name="discount-service" />
+        <module name="shared-library" />
         <module name="api-gateway" />
         <module name="product-service" />
         <module name="user-service" />
@@ -28,6 +29,7 @@
       <module name="eureka-service" options="-parameters" />
       <module name="inventory-service" options="-parameters" />
       <module name="product-service" options="-parameters" />
+      <module name="shared-library" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>
   </component>

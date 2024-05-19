@@ -27,6 +27,7 @@
         <module>api-gateway</module>
         <module>eureka-service</module>
         <module>shared-library</module>
+        <module>order-service</module>
     </modules>
 
     <properties>

@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.time.LocalDateTime;
+
 @Component
 public class Mapper {
     @Qualifier("productWebClient")
@@ -36,7 +38,7 @@ public class Mapper {
                 .userId(cartRequest.getUserId())
                 .productId(cartRequest.getProductId())
                 .quantity(cartRequest.getQuantity())
-                .createdAt(cartRequest.getCreatedAt())
+                .createdAt(LocalDateTime.now())
                 .build();
     }
 

@@ -16,11 +16,4 @@ public class WebClientConfig {
                 .build();
     }
 
-    @Bean("userWebClient")
-    @LoadBalanced
-    public WebClient userWebClient() {
-        return WebClient.builder()
-                .baseUrl("http://localhost:8084/api/v1/user")
-                .build();
-    }
 }

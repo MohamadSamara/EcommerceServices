@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -23,11 +24,12 @@ public class CartEntity {
     @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "product_id")
-    private Long productId;
+    @Column(name = "cart_item")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cartId")
+    private List<CartItem> cartItem;
 
-    @Column(name = "quantity")
-    private Integer quantity;
+    @Column(name = "total_price")
+    private Double totalPrice;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

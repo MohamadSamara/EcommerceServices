@@ -2,14 +2,19 @@ package com.samara.cart.service.mapper;
 
 import com.samara.cart.service.bo.cart.CartResponse;
 import com.samara.cart.service.bo.cart.CreateCartRequest;
+import com.samara.cart.service.bo.cartItem.CartItemResponse;
+import com.samara.cart.service.bo.cartItem.CreateCartItemRequest;
 import com.samara.cart.service.bo.product.ProductResponse;
 import com.samara.cart.service.model.CartEntity;
+import com.samara.cart.service.model.CartItem;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class Mapper {
@@ -22,28 +27,55 @@ public class Mapper {
 
     public CartResponse EntityToCartResponse(CartEntity cartEntity) {
 
+        // Create Empty List To Avoid The Null Exception
+        List<CartItemResponse> cartItemResponses = new ArrayList<>();
+        // if the list not null (not empty) :: get all cartItemResponses
+        if (cartEntity.getCartItem() != null) {
+            cartItemResponses = cartEntity.getCartItem()
+                    .stream()
+                    .map(this::cartItemEntityToCartItemResponse)
+                    .toList();
+        }
 
-        return CartResponse.builder()
+        CartResponse cartResponse = CartResponse.builder()
                 .id(cartEntity.getId())
                 .userId(cartEntity.getUserId())
-                .productId(getProduct(cartEntity.getProductId()))
-                .quantity(cartEntity.getQuantity())
+                .cartItem(cartItemResponses) // If it's null (empty) return empty list (note : empty list not like null)
                 .createdAt(cartEntity.getCreatedAt())
                 .modifiedAt(cartEntity.getModifiedAt())
                 .build();
+
+        cartResponse.setTotalPrice((calculateTotalPriceForCart(cartResponse)));
+        return cartResponse;
+
     }
 
-    public CartEntity CartRequestToEntity(CreateCartRequest cartRequest) {
-        return CartEntity.builder()
-                .userId(cartRequest.getUserId())
-                .productId(cartRequest.getProductId())
-                .quantity(cartRequest.getQuantity())
-                .createdAt(LocalDateTime.now())
+
+    public CartItemResponse cartItemEntityToCartItemResponse(CartItem cartItem) {
+        CartItemResponse cartItemResponse = CartItemResponse.builder()
+                .id(cartItem.getId())
+                .productId(getProduct(cartItem.getProductId()))
+                .quantity(cartItem.getQuantity())
                 .build();
+
+        cartItemResponse.setTotalPrice(calculateTotalPriceForCartIem(cartItemResponse));
+        return cartItemResponse;
+    }
+
+    private Double calculateTotalPriceForCartIem(CartItemResponse cartItemResponse) {
+        return cartItemResponse.getProductId().getPrice() * cartItemResponse.getQuantity();
+    }
+
+    private Double calculateTotalPriceForCart(CartResponse cartResponse) {
+
+        return cartResponse.getCartItem()
+                .stream()
+                .mapToDouble(CartItemResponse::getTotalPrice)
+                .sum();
     }
 
 
-    private ProductResponse getProduct(Long id) {
+    public ProductResponse getProduct(Long id) {
 
         ResponseEntity<ProductResponse> productResponse =
                 productWebClient.get()
@@ -61,5 +93,27 @@ public class Mapper {
             throw new RuntimeException("Something Wrong in productResponse ...");
         }
     }
+
+    public CartEntity CartRequestToEntity(CreateCartRequest createCartRequest) {
+        return CartEntity.builder()
+                .userId(createCartRequest.getUserId())
+                .totalPrice(createCartRequest.getTotalPrice())
+                .cartItem(createCartRequest.getCartItem())
+                .createdAt(LocalDateTime.now())
+                .build();
+    }
+
+    public CartItem createCartItemRequestToCartItemEntity(CreateCartItemRequest createCartItemRequest, CartEntity cart) {
+
+        ProductResponse productResponse = getProduct(createCartItemRequest.getProductId());
+
+        return CartItem.builder()
+                .cartId(cart)
+                .quantity(createCartItemRequest.getQuantity())
+                .productId(productResponse.getId())
+                .totalPrice(createCartItemRequest.getQuantity() * productResponse.getPrice())
+                .build();
+    }
+
 
 }

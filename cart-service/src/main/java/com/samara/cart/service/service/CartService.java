@@ -1,18 +1,17 @@
 package com.samara.cart.service.service;
 
 import com.samara.cart.service.bo.cart.CartResponse;
-import com.samara.cart.service.bo.cart.CreateCartRequest;
-import com.samara.cart.service.bo.cart.UpdateCartRequest;
-
-import java.util.List;
+import com.samara.cart.service.bo.cartItem.CreateCartItemRequest;
 
 public interface CartService {
 
-    CartResponse addToCart(CreateCartRequest createCartRequest, Long userId);
+    CartResponse addToCart(CreateCartItemRequest createCartItemRequest, Long userId);
 
-    List<CartResponse> cartDetails(Long userId);
+    CartResponse cartDetails(Long userId);
 
-    String deleteCart(Long userId, Long productId);
+    String deleteCart(Long userId);
 
-    CartResponse updateCartQuantity(Long userId, Long productId, UpdateCartRequest updateCartRequest);
+    String deleteCartItem(Long userId, Long productId);
+
+//    CartResponse updateCartQuantity(Long userId, Long productId, UpdateCartRequest updateCartRequest);
 }

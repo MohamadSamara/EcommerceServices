@@ -1,18 +1,19 @@
 package com.samara.cart.service.bo.cart;
 
-import com.samara.cart.service.bo.product.ProductResponse;
+import com.samara.cart.service.bo.cartItem.CartItemResponse;
 import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
 public class CartResponse {
     private Long id;
     private Long userId;
-    private ProductResponse productId;
-    private Integer quantity;
+    private List<CartItemResponse> cartItem;
+    private Double totalPrice;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 }

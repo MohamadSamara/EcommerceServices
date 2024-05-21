@@ -11,4 +11,6 @@ public interface DiscountService {
     DiscountResponse addDiscount(CreateDiscountRequest discountRequest);
 
     DiscountResponse updateDiscount(UpdateDiscountRequest updateDiscountRequest, Long id);
+
+    String deleteDiscount(Long id);
 }

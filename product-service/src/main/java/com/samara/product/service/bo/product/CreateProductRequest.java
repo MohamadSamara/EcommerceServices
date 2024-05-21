@@ -14,5 +14,6 @@ public class CreateProductRequest {
     private Long discountId;
     private Long inventoryId;
     private double price;
+    private double salePrice;
     private LocalDateTime createdAt;
 }

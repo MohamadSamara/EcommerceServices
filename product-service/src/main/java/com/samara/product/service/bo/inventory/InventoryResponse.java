@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 @Data
 public class InventoryResponse {
     private Long id;
+    private String name;
     private Long quantity;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;

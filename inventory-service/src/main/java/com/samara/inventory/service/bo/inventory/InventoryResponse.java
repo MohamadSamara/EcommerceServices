@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Builder
 public class InventoryResponse {
     private Long id;
+    private String name;
     private Long quantity;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;

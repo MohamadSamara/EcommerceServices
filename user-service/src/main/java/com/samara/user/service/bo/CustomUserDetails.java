@@ -18,7 +18,7 @@ public class CustomUserDetails implements UserDetails {
     private String password;
     private String firstName;
     private String lastName;
-    private Long telephone;
+    private String telephone;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
     private Role role;

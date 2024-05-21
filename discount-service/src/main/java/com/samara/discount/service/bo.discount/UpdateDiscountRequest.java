@@ -12,6 +12,5 @@ public class UpdateDiscountRequest {
     private String description;
     private Double discountPercent;
     private Boolean isActive;
-    private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 }

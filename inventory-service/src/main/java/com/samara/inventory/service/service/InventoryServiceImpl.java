@@ -53,6 +53,7 @@ public class InventoryServiceImpl implements InventoryService {
 
     private void updateInventoryHelper(InventoryEntity existingInventory, UpdateInventoryRequest updateInventoryRequest) {
         existingInventory.setQuantity(updateInventoryRequest.getQuantity());
+        existingInventory.setName(updateInventoryRequest.getName());
         existingInventory.setModifiedAt(LocalDateTime.now());
     }
 

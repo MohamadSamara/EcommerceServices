@@ -21,14 +21,14 @@ public class CartEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     private Long userId;
 
-    @Column(name = "cart_item")
+    @Column(name = "cart_item", nullable = false)
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cartId")
     private List<CartItem> cartItem;
 
-    @Column(name = "total_price")
+    @Column(name = "total_price", nullable = false)
     private Double totalPrice;
 
     @Column(name = "created_at")

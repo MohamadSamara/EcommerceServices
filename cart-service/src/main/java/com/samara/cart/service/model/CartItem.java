@@ -11,7 +11,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "mst_cart_item")
+@Table(
+        name = "mst_cart_item",
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"cartId", "productId"})}
+)
 public class CartItem {
 
     @Column(name = "id")
@@ -20,15 +23,15 @@ public class CartItem {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "cart_id")
+    @JoinColumn(name = "cart_id", nullable = false)
     private CartEntity cartId;
 
-    @Column(name = "product_id")
+    @Column(name = "product_id", nullable = false)
     private Long productId;
 
-    @Column(name = "quantity")
+    @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
-    @Column(name = "total_price")
+    @Column(name = "total_price", nullable = false)
     private Double totalPrice;
 }

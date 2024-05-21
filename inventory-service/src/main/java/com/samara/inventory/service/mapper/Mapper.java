@@ -8,18 +8,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class Mapper {
 
-//    public InventoryEntity responseInventoryToInventoryEntity(InventoryResponse inventoryResponse) {
-//        return InventoryEntity.builder()
-//                .id(inventoryResponse.getId())
-//                .quantity(inventoryResponse.getQuantity())
-//                .createdAt(inventoryResponse.getCreatedAt())
-//                .modifiedAt(inventoryResponse.getModifiedAt())
-//                .build();
-//    }
 
     public InventoryResponse InventoryEntityToResponse(InventoryEntity inventoryEntity) {
         return InventoryResponse.builder()
                 .id(inventoryEntity.getId())
+                .name(inventoryEntity.getName())
                 .quantity(inventoryEntity.getQuantity())
                 .createdAt(inventoryEntity.getCreatedAt())
                 .modifiedAt(inventoryEntity.getModifiedAt())
@@ -29,6 +22,7 @@ public class Mapper {
 
     public InventoryEntity createInventoryRequestToInventoryEntity(CreateInventoryRequest createInventoryRequest) {
         return InventoryEntity.builder()
+                .name(createInventoryRequest.getName())
                 .quantity(createInventoryRequest.getQuantity())
                 .createdAt(createInventoryRequest.getCreatedAt())
                 .build();

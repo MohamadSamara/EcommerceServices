@@ -15,27 +15,31 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Table(name = "mst_product")
 public class ProductEntity {
-    @Column(name = "id")
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "description")
+    @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name = "category_id")
+    @Column(name = "category_id", nullable = false)
     private Long categoryId;
 
-    @Column(name = "inventory_id")
+    @Column(name = "inventory_id", nullable = false)
     private Long inventoryId;
 
-    @Column(name = "price")
-    private double price;
+    @Column(name = "price", nullable = false)
+    private Double price;
 
-    @Column(name = "discount_id")
+    @Column(name = "sale_price", nullable = false)
+    private Double salePrice;
+
+    @Column(name = "discount_id", nullable = false)
     private Long discountId;
 
     @Column(name = "created_at")

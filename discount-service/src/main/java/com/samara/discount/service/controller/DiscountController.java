@@ -32,4 +32,9 @@ public class DiscountController {
     public ResponseEntity<DiscountResponse> updateDiscount(@RequestBody UpdateDiscountRequest updateDiscountRequest, @PathVariable Long id) {
         return new ResponseEntity<>(discountService.updateDiscount(updateDiscountRequest, id), HttpStatus.ACCEPTED);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteDiscount(@PathVariable Long id) {
+        return new ResponseEntity<>(discountService.deleteDiscount(id), HttpStatus.ACCEPTED);
+    }
 }

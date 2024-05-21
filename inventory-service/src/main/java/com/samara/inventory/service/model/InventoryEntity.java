@@ -21,6 +21,9 @@ public class InventoryEntity {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "name", unique = true, nullable = false)
+    private String name;
+
     @Column(name = "quantity")
     private Long quantity;
 

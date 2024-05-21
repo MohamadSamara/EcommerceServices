@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class CreateInventoryRequest {
+    private String name;
     private Long quantity;
     private LocalDateTime CreatedAt;
 }

@@ -15,6 +15,7 @@ public class ProductResponse {
     private String name;
     private String description;
     private double price;
+    private double salePrice;
     private CategoryResponse categoryId;
     private InventoryResponse inventoryId;
     private DiscountResponse discountId;

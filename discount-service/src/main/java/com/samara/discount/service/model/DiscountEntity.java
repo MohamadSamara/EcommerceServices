@@ -21,17 +21,17 @@ public class DiscountEntity {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true, nullable = false)
     private String name;
 
     @Column(name = "description")
     private String description;
 
-    @Column(name = "discount_percent")
+    @Column(name = "discount_percent", nullable = false, unique = true)
     private Double discountPercent;
 
-    @Column(name = "is_active")
-    private Boolean isActive;
+    @Column(name = "is_active" , nullable = false)
+    private Boolean isActive = false;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

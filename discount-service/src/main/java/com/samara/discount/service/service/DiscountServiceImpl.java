@@ -47,10 +47,20 @@ public class DiscountServiceImpl implements DiscountService {
 
     private void updateDiscountHelper(DiscountEntity existingEntity, UpdateDiscountRequest updateDiscountRequest) {
         existingEntity.setName(updateDiscountRequest.getName());
-        existingEntity.setDescription(existingEntity.getDescription());
+        existingEntity.setDescription(updateDiscountRequest.getDescription());
         existingEntity.setDiscountPercent(updateDiscountRequest.getDiscountPercent());
         existingEntity.setIsActive(updateDiscountRequest.getIsActive());
         existingEntity.setModifiedAt(LocalDateTime.now());
+    }
+
+    @Override
+    public String deleteDiscount(Long id) {
+        DiscountEntity discountEntity = discountRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Not Found with id => " + id));
+
+        discountRepository.delete(discountEntity);
+
+        return "Discount Deleted Successfully";
     }
 
 }

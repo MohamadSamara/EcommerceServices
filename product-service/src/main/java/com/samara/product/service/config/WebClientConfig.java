@@ -18,14 +18,14 @@ public class WebClientConfig {
     @Bean("inventoryWebClient")
     public WebClient inventoryWebClient() {
         return WebClient.builder()
-                .baseUrl("http://localhost:8082/")
+                .baseUrl("http://localhost:8082/api/v1/inventory")
                 .build();
     }
 
     @Bean("discountWebClient")
     public WebClient discountWebClient() {
         return WebClient.builder()
-                .baseUrl("http://localhost:8083/")
+                .baseUrl("http://localhost:8083/api/v1/discount")
                 .build();
     }
 

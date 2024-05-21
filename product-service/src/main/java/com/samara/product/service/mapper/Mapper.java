@@ -35,6 +35,7 @@ public class Mapper {
                 .categoryId(getCategoryFromProduct(productEntity.getCategoryId()))
                 .discountId(getDiscountFromProduct(productEntity.getDiscountId()))
                 .price(productEntity.getPrice())
+                .salePrice(productEntity.getSalePrice())
                 .description(productEntity.getDescription())
                 .createdAt(productEntity.getCreatedAt())
                 .modifiedAt(productEntity.getModifiedAt())
@@ -49,18 +50,62 @@ public class Mapper {
                 .categoryId(productRequest.getCategoryId())
                 .discountId(productRequest.getDiscountId())
                 .price(productRequest.getPrice())
+                .salePrice(productRequest.getSalePrice())
                 .description(productRequest.getDescription())
                 .createdAt(productRequest.getCreatedAt())
                 .build();
-
     }
 
-    // Helper Function To Get The Inventory Object from Inventory-Service
+
+    public void increaseInventoryQuantity(Long inventoryId) {
+        InventoryResponse inventory = getInventoryFromProduct(inventoryId);
+        inventory.setQuantity(inventory.getQuantity() + 1);
+        inventoryWebClient.put()
+                .uri(uriBuilder ->
+                        uriBuilder.path("/update/{id}").build(inventoryId)
+                )
+                .bodyValue(inventory)
+                .retrieve()
+                .toBodilessEntity()
+                .block();
+    }
+
+    public void decreaseInventoryQuantity(Long inventoryId) {
+        InventoryResponse inventory = getInventoryFromProduct(inventoryId);
+        inventory.setQuantity(inventory.getQuantity() - 1);
+        inventoryWebClient.put()
+                .uri(uriBuilder ->
+                        uriBuilder.path("/update/{id}").build(inventoryId)
+                )
+                .bodyValue(inventory)
+                .retrieve()
+                .toBodilessEntity()
+                .block();
+    }
+
+    public DiscountResponse getDiscountFromProduct(Long discountId) {
+        ResponseEntity<DiscountResponse> discountResponseEntity =
+                discountWebClient.get()
+                        .uri(
+                                uriBuilder -> uriBuilder
+                                        .path("/{id}")
+                                        .build(discountId)
+                        )
+                        .retrieve()
+                        .toEntity(DiscountResponse.class)
+                        .block();
+        if (discountResponseEntity != null && discountResponseEntity.hasBody()) {
+            return discountResponseEntity.getBody();
+        } else {
+            return new DiscountResponse();
+        }
+    }
+
     public InventoryResponse getInventoryFromProduct(Long inventoryId) {
         ResponseEntity<InventoryResponse> inventoryResponseEntity =
                 inventoryWebClient.get()
                         .uri(uriBuilder -> uriBuilder
-                                .path("/api/v1/inventory/{id}")
+                                .path("/{id}")
                                 .build(inventoryId)
                         )
                         .retrieve()
@@ -74,7 +119,6 @@ public class Mapper {
         }
     }
 
-    // Helper Function To Get The Category Object from Category-Service
     private CategoryResponse getCategoryFromProduct(Long productEntityId) {
         ResponseEntity<CategoryResponse> categoryResponseEntity =
                 categoryWebClient.get()
@@ -93,51 +137,29 @@ public class Mapper {
         }
     }
 
-    // Helper Function To Get The Discount Object from Discount-Service
-    public DiscountResponse getDiscountFromProduct(Long discountId) {
-        ResponseEntity<DiscountResponse> discountResponseEntity =
-                discountWebClient.get()
+
+/*
+
+  * How To Deal With WebClint :
+
+  public List<CategoryResponse> getCategoryFromProduct() {
+
+        ResponseEntity<List<CategoryResponse>> responseEntity =
+                categoryWebClient.get()
                         .uri(
-                                uriBuilder -> uriBuilder
-                                        .path("/api/v1/discount/{id}")
-                                        .build(discountId)
+                                uriBuilder -> uriBuilder.path("/api/v1/category/categories").build()
                         )
                         .retrieve()
-                        .toEntity(DiscountResponse.class)
-                        .block();
-        if (discountResponseEntity != null && discountResponseEntity.hasBody()) {
-            return discountResponseEntity.getBody();
+                        .toEntityList(CategoryResponse.class)
+                        .block(); // block() method is used to block until the result is available
+
+        if (responseEntity != null && responseEntity.hasBody()) {
+            return responseEntity.getBody();
         } else {
-            return new DiscountResponse();
+            return Collections.emptyList();
         }
     }
 
-
-    public void increaseInventoryQuantity(Long inventoryId) {
-        InventoryResponse inventory = getInventoryFromProduct(inventoryId);
-        inventory.setQuantity(inventory.getQuantity() + 1);
-        inventoryWebClient.put()
-                .uri(uriBuilder ->
-                        uriBuilder.path("api/v1/inventory/update/{id}").build(inventoryId)
-                )
-                .bodyValue(inventory)
-                .retrieve()
-                .toBodilessEntity()
-                .block();
-    }
-
-    public void decreaseInventoryQuantity(Long inventoryId) {
-        InventoryResponse inventory = getInventoryFromProduct(inventoryId);
-        inventory.setQuantity(inventory.getQuantity() - 1);
-        inventoryWebClient.put()
-                .uri(uriBuilder ->
-                        uriBuilder.path("api/v1/inventory/update/{id}").build(inventoryId)
-                )
-                .bodyValue(inventory)
-                .retrieve()
-                .toBodilessEntity()
-                .block();
-    }
-
+*/
 
 }

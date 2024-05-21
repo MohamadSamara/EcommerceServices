@@ -1,6 +1,7 @@
 package com.samara.cart.service.controller;
 
 import com.samara.cart.service.bo.cart.CartResponse;
+import com.samara.cart.service.bo.cart.UpdateCartRequest;
 import com.samara.cart.service.bo.cartItem.CreateCartItemRequest;
 import com.samara.cart.service.service.CartService;
 import org.springframework.http.HttpStatus;
@@ -28,12 +29,6 @@ public class CartController {
             @PathVariable Long userId
     ) {
         return new ResponseEntity<>(cartService.addToCart(createCartRequest, userId), HttpStatus.CREATED);
-
-    }
-
-    @DeleteMapping("/{userId}/delete-cart")
-    public ResponseEntity<String> deleteCart(@PathVariable Long userId) {
-        return new ResponseEntity<>(cartService.deleteCart(userId), HttpStatus.OK);
     }
 
 
@@ -42,10 +37,14 @@ public class CartController {
         return new ResponseEntity<>(cartService.deleteCartItem(userId, productId), HttpStatus.OK);
     }
 
-//  Just To See The Header Info
-//    @GetMapping("/allMultiValueMap")
-//    public Map<String, String> allMultiValueMap(@RequestHeader MultiValueMap<String, String> headers) {
-//        return headers.toSingleValueMap();
-//    }
+    @PutMapping("/{userId}/update-quantity/{productId}")
+    public ResponseEntity<String> updateCartQuantity(
+            @RequestBody UpdateCartRequest updateCartRequest,
+            @PathVariable Long userId,
+            @PathVariable Long productId
+    ) {
+        return new ResponseEntity<>(cartService.updateCartQuantity(updateCartRequest, userId, productId), HttpStatus.CREATED);
+    }
+
 
 }

@@ -1,7 +1,9 @@
 package com.samara.cart.service.service;
 
 import com.samara.cart.service.bo.cart.CartResponse;
+import com.samara.cart.service.bo.cart.UpdateCartRequest;
 import com.samara.cart.service.bo.cartItem.CreateCartItemRequest;
+import com.samara.cart.service.bo.product.ProductResponse;
 import com.samara.cart.service.mapper.Mapper;
 import com.samara.cart.service.model.CartEntity;
 import com.samara.cart.service.model.CartItem;
@@ -11,6 +13,7 @@ import jakarta.ws.rs.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,49 +35,39 @@ public class CartServiceImpl implements CartService {
     @Override
     public CartResponse addToCart(CreateCartItemRequest createCartItemRequest, Long userId) {
 
-        CartEntity userCart = createNewCartIfNotExist(userId, createCartItemRequest.getProductId());
+        CartEntity userCart = createNewCartIfNotExist(userId);
+        CartItem cartItem = mapper.createCartItemRequestToCartItemEntity(createCartItemRequest, userCart);
 
-        cartItemRepository.save(mapper.createCartItemRequestToCartItemEntity(createCartItemRequest, userCart));
+        userCart.getCartItem().add(cartItem);
+        userCart.setTotalPrice(userCart.getTotalPrice() + cartItem.getTotalPrice());
+        userCart.setModifiedAt(LocalDateTime.now());
 
+        cartRepository.save(userCart);
         return mapper.EntityToCartResponse(userCart);
     }
 
 
-    private CartEntity createNewCartIfNotExist(Long userId, Long productId) {
+    private CartEntity createNewCartIfNotExist(Long userId) {
         Optional<CartEntity> userCart = cartRepository.findByUserId(userId);
-        if (userCart.isEmpty()) {
-            CartEntity newCart = CartEntity.builder()
-                    .userId(userId)
-                    .createdAt(LocalDateTime.now())
-                    .totalPrice(mapper.getProduct(productId).getPrice())
-                    .build();
-            cartRepository.save(newCart);
-            return newCart;
-        }
-        return userCart.get();
+        return userCart.orElseGet(
+                () -> CartEntity.builder()
+                        .userId(userId)
+                        .createdAt(LocalDateTime.now())
+                        .totalPrice(0.0)
+                        .cartItem(new ArrayList<>()) // Initialize the cart item list here
+                        .build()
+        );
     }
 
     @Override
     public CartResponse cartDetails(Long userId) {
-
         CartEntity userCart = cartRepository.findByUserId(userId)
-                .orElseThrow(() -> new NotFoundException("No Cart Found"));
-
+                .orElseThrow(() -> new RuntimeException("No Cart Found (Add Item To See the Details)"));
         List<CartItem> userCartItems = cartItemRepository.findAllByCartId(userCart);
-
         userCart.setCartItem(userCartItems);
-
         return mapper.EntityToCartResponse(userCart);
-
     }
 
-    @Override
-    public String deleteCart(Long userId) {
-        CartEntity cartEntity = cartRepository.findByUserId(userId)
-                .orElseThrow(() -> new NotFoundException("No Cart Found"));
-        cartRepository.delete(cartEntity);
-        return "Cart Deleted Successfully";
-    }
 
     @Override
     public String deleteCartItem(Long userId, Long productId) {
@@ -86,7 +79,49 @@ public class CartServiceImpl implements CartService {
                 .orElseThrow(() -> new NotFoundException("No Cart Found"));
 
         cartItemRepository.delete(cartItem);
+        updateTotalPriceForCartWhenDelete(cartEntity, cartItem.getTotalPrice());
         return "Cart Deleted Successfully";
     }
+
+
+    private void updateTotalPriceForCartWhenDelete(CartEntity cartEntity, Double cartItemPrice) {
+        cartEntity.setModifiedAt(LocalDateTime.now());
+        cartEntity.setTotalPrice(cartEntity.getTotalPrice() - cartItemPrice);
+        cartRepository.save(cartEntity);
+    }
+
+    @Override
+    public String updateCartQuantity(UpdateCartRequest updateCartRequest, Long userId, Long productId) {
+        if (updateCartRequest.getQuantity() == 0) {
+            return deleteCartItem(userId, productId);
+        }
+        CartEntity cartEntity = cartRepository.findByUserId(userId)
+                .orElseThrow(() -> new NotFoundException("No Cart Found"));
+
+        CartItem cartItem = cartItemRepository.findByProductIdAndCartId(productId, cartEntity)
+                .orElseThrow(() -> new NotFoundException("No Cart Found"));
+
+        cartItem.setQuantity(updateCartRequest.getQuantity());
+        updateTotalPriceForCartItem(cartItem);
+        updateTotalPriceForCartWhenUpdate(cartEntity);
+        return "Quantity Updated Successfully";
+    }
+
+    private void updateTotalPriceForCartWhenUpdate(CartEntity cartEntity) {
+        Double totalPrice = cartItemRepository.findByCartId(cartEntity)
+                .stream()
+                .mapToDouble(CartItem::getTotalPrice)
+                .sum();
+        cartEntity.setModifiedAt(LocalDateTime.now());
+        cartEntity.setTotalPrice(totalPrice);
+        cartRepository.save(cartEntity);
+    }
+
+    private void updateTotalPriceForCartItem(CartItem cartItem) {
+        ProductResponse product = mapper.getProduct(cartItem.getProductId());
+        cartItem.setTotalPrice(product.getPrice() * cartItem.getQuantity());
+        cartItemRepository.save(cartItem);
+    }
+
 
 }

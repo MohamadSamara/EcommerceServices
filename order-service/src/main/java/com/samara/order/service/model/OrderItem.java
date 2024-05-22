@@ -22,13 +22,13 @@ public class OrderItem {
     @JoinColumn(name = "order_id", nullable = false)
     private OrderEntity order;
 
-    @Column(name = "product_id")
+    @Column(name = "product_id", nullable = false)
     private Long productId;
 
-    @Column(name = "quantity")
+    @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
-    @Column(name = "total_price")
+    @Column(name = "total_price", nullable = false)
     private Double totalPrice;
 
 }

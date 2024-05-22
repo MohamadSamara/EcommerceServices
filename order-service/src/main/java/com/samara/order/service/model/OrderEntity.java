@@ -21,14 +21,14 @@ public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     private Long userId;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
     @Column(name = "order_item")
     private List<OrderItem> orderItem;
 
-    @Column(name = "total_price")
+    @Column(name = "total_price", nullable = false)
     private Double totalPrice;
 
     @Column(name = "created_at")

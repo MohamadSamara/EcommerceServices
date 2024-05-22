@@ -16,4 +16,11 @@ public class WebClientConfig {
                 .build();
     }
 
+    @Bean("cartWebClient")
+    @LoadBalanced
+    public WebClient cartWebClient() {
+        return WebClient.builder()
+                .baseUrl("http://localhost:8085/api/v1/cart")
+                .build();
+    }
 }

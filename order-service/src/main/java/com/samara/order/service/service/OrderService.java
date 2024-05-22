@@ -5,9 +5,9 @@ import com.samara.order.service.bo.order.OrderResponse;
 
 public interface OrderService {
 
-    OrderResponse order(Long orderId);
+    OrderResponse order(Long userId);
 
-    OrderResponse orderForUser(Long userId);
+    OrderResponse createOrder(Long userId, Long cartId);
 
-    String deleteOrderForUser(Long userId);
+    String clearOrderIfExisting(Long userId);
 }

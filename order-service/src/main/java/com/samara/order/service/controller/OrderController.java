@@ -16,20 +16,22 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-
-    @GetMapping("/{orderId}")
-    public ResponseEntity<OrderResponse> order(@PathVariable Long orderId) {
-        return new ResponseEntity<>(orderService.order(orderId), HttpStatus.OK);
+    @GetMapping("/user-order/{userId}")
+    public ResponseEntity<OrderResponse> order(@PathVariable Long userId) {
+        return new ResponseEntity<>(orderService.order(userId), HttpStatus.OK);
     }
 
-    @GetMapping("/{userId}/user-order")
-    public ResponseEntity<OrderResponse> orderForUser(@PathVariable Long userId) {
-        return new ResponseEntity<>(orderService.orderForUser(userId), HttpStatus.OK);
+    @PostMapping("/{userId}/create-order/{cartId}")
+    public ResponseEntity<OrderResponse> createOrder(
+            @PathVariable Long userId,
+            @PathVariable Long cartId
+    ) {
+        return new ResponseEntity<>(orderService.createOrder(userId, cartId), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{userId}/delete-order")
-    public ResponseEntity<String> deleteOrderForUser(@PathVariable Long userId) {
-        return new ResponseEntity<>(orderService.deleteOrderForUser(userId), HttpStatus.OK);
+    @DeleteMapping("/delete-order/{userId}")
+    public ResponseEntity<String> clearExistingOrder(@PathVariable Long userId) {
+        return new ResponseEntity<>(orderService.clearOrderIfExisting(userId), HttpStatus.OK);
     }
 
 

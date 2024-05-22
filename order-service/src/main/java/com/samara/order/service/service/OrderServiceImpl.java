@@ -6,11 +6,16 @@ import com.samara.order.service.model.OrderEntity;
 import com.samara.order.service.model.OrderItem;
 import com.samara.order.service.repository.OrderItemRepository;
 import com.samara.order.service.repository.OrderRepository;
-import jakarta.ws.rs.NotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+@Slf4j
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -25,41 +30,61 @@ public class OrderServiceImpl implements OrderService {
         this.mapper = mapper;
     }
 
-
+    @Transactional
     @Override
-    public OrderResponse order(Long orderId) {
+    public OrderResponse createOrder(Long userId, Long cartId) {
+        clearOrderIfExisting(userId);
+        OrderEntity order = createNewOrder(userId);
+        List<OrderItem> orderItems = mapper.getOrderItemsFromCartItems(userId, order);
 
-        OrderEntity order = orderRepository.findById(orderId)
-                .orElseThrow(() -> new NotFoundException("Order Not Found With ID = " + orderId));
+        order.setModifiedAt(LocalDateTime.now());
+        order.setOrderItem(orderItems);
+        order.setTotalPrice(orderItems.stream().mapToDouble(OrderItem::getTotalPrice).sum());
 
-        List<OrderItem> orderItem = orderItemRepository.findAllByOrderId(orderId);
-        order.setOrderItem(orderItem);
+        log.debug("Saving order: {}", order);
+
+        orderRepository.save(order);
+        orderItemRepository.saveAll(orderItems);
 
         return mapper.orderEntityToOrderResponse(order);
     }
 
-    @Override
-    public OrderResponse orderForUser(Long userId) {
-        OrderEntity orderForUser = orderRepository.findByUserId(userId)
-                .orElseThrow(() -> new NotFoundException("Order Not Found With UserId = " + userId));
-
-        List<OrderItem> orderItem = orderItemRepository.findAllByOrderId(orderForUser.getId());
-
-        orderForUser.setOrderItem(orderItem);
-
-        return mapper.orderEntityToOrderResponse(orderForUser);
+    private OrderEntity createNewOrder(Long userId) {
+        OrderEntity newOrder = OrderEntity.builder()
+                .userId(userId)
+                .orderItem(new ArrayList<>())
+                .totalPrice(0.0)
+                .createdAt(LocalDateTime.now())
+                .modifiedAt(LocalDateTime.now())
+                .build();
+        log.debug("Creating new order for userId: {}", userId);
+        return orderRepository.save(newOrder);
     }
 
     @Override
-    public String deleteOrderForUser(Long userId) {
+    public String clearOrderIfExisting(Long userId) {
+        Optional<OrderEntity> existingOrder = orderRepository.findByUserId(userId);
 
-        OrderEntity userOrder = orderRepository.findByUserId(userId)
-                .orElseThrow(() -> new NotFoundException("Order Not Found With UserId = " + userId));
-
-        orderRepository.delete(userOrder);
+        existingOrder.ifPresent(order -> {
+            log.debug("Deleting existing order: {}", order);
+            orderItemRepository.deleteAll(order.getOrderItem());
+            orderRepository.delete(order);
+        });
 
         return "User Order Deleted Successfully";
     }
 
+
+    @Override
+    public OrderResponse order(Long userId) {
+
+        OrderEntity order = orderRepository.findByUserId(userId)
+                .orElseGet(() -> createNewOrder(userId));
+
+        List<OrderItem> orderItem = orderItemRepository.findAllByOrderId(order.getId());
+        order.setOrderItem(orderItem);
+
+        return mapper.orderEntityToOrderResponse(order);
+    }
 
 }

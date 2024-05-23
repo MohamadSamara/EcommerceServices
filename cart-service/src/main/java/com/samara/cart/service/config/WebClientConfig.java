@@ -12,7 +12,7 @@ public class WebClientConfig {
     @LoadBalanced
     public WebClient productWebClient() {
         return WebClient.builder()
-                .baseUrl("http://localhost:8080/api/v1/product")
+                .baseUrl("http://localhost:8088/api/v1/product")
                 .build();
     }
 

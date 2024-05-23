@@ -15,6 +15,10 @@ public class RouteValidation {
 //            "/api/v1/inventory",
 //            "/api/v1/product",
 //            "/api/v1/cart",
+//            "/api/v1/order",
+            "/swagger-ui.html",
+            "/swagger-ui/**",
+            "/api-docs/**",
             "/api/v1/auth/register",
             "/api/v1/auth/authenticate"
     );

@@ -6,11 +6,12 @@ import com.samara.product.service.bo.inventory.InventoryResponse;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class ProductResponse {
+public class ProductResponse implements Serializable {
     private Long id;
     private String name;
     private String description;

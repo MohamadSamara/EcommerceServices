@@ -6,6 +6,8 @@ import com.samara.discount.service.bo.discount.UpdateDiscountRequest;
 import com.samara.discount.service.mapper.Mapper;
 import com.samara.discount.service.model.DiscountEntity;
 import com.samara.discount.service.repository.DiscountRepository;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -21,6 +23,7 @@ public class DiscountServiceImpl implements DiscountService {
         this.mapper = mapper;
     }
 
+    @Cacheable(value = "discountCache", key = "'discount:'+#id")
     @Override
     public DiscountResponse discount(Long id) {
         DiscountEntity discountEntity = discountRepository.findById(id)
@@ -28,6 +31,7 @@ public class DiscountServiceImpl implements DiscountService {
         return mapper.DiscountEntityToDiscountResponse(discountEntity);
     }
 
+    @CacheEvict(value = "discountCache", allEntries = true)
     @Override
     public DiscountResponse addDiscount(CreateDiscountRequest discountRequest) {
         discountRequest.setCreatedAt(LocalDateTime.now());
@@ -36,6 +40,7 @@ public class DiscountServiceImpl implements DiscountService {
         return mapper.DiscountEntityToDiscountResponse(discountEntity);
     }
 
+    @CacheEvict(value = "discountCache", key = "'discount:'+#id", allEntries = true)
     @Override
     public DiscountResponse updateDiscount(UpdateDiscountRequest updateDiscountRequest, Long id) {
         DiscountEntity existingEntity = discountRepository.findById(id)
@@ -53,13 +58,12 @@ public class DiscountServiceImpl implements DiscountService {
         existingEntity.setModifiedAt(LocalDateTime.now());
     }
 
+    @CacheEvict(value = "discountCache", allEntries = true)
     @Override
     public String deleteDiscount(Long id) {
         DiscountEntity discountEntity = discountRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Not Found with id => " + id));
-
         discountRepository.delete(discountEntity);
-
         return "Discount Deleted Successfully";
     }
 

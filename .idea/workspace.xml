@@ -5,35 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bed7f33a-5d18-435a-939c-5003aa77f959" name="Changes" comment="test and enhance the code of order service">
+      <change afterPath="$PROJECT_DIR$/category-service/src/main/java/com/samara/category/service/config/CategoryRedisConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/category-service/src/main/java/com/samara/category/service/config/RedisConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discount-service/src/main/java/com/samara/discount/service/config/RedisConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared-library/src/main/java/com/samara/shared/config/AbstractRedisConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared-library/src/main/java/com/samara/shared/config/RedisConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/samara/apigateway/filter/RouteValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/samara/apigateway/filter/RouteValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/target/classes/com/samara/apigateway/filter/RouteValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/target/classes/com/samara/apigateway/filter/RouteValidation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/samara/cart/service/config/WebClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/java/com/samara/cart/service/config/WebClientConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/category-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/category-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/category-service/src/main/java/com/samara/category/service/CategoryServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/src/main/java/com/samara/category/service/CategoryServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/category-service/src/main/java/com/samara/category/service/bo/category/CategoryResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/src/main/java/com/samara/category/service/bo/category/CategoryResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/category-service/src/main/java/com/samara/category/service/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/src/main/java/com/samara/category/service/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/category-service/src/main/java/com/samara/category/service/service/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/src/main/java/com/samara/category/service/service/CategoryServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/category-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/category-service/target/classes/com/samara/category/service/CategoryServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/target/classes/com/samara/category/service/CategoryServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/category-service/target/classes/com/samara/category/service/bo/category/CategoryResponse$CategoryResponseBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/target/classes/com/samara/category/service/bo/category/CategoryResponse$CategoryResponseBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/category-service/target/classes/com/samara/category/service/bo/category/CategoryResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/target/classes/com/samara/category/service/bo/category/CategoryResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/category-service/target/classes/com/samara/category/service/controller/CategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/target/classes/com/samara/category/service/controller/CategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/category-service/target/classes/com/samara/category/service/service/CategoryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/target/classes/com/samara/category/service/service/CategoryServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/discount-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/discount-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/discount-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/discount-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discount-service/src/main/java/com/samara/discount/service/DiscountServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/discount-service/src/main/java/com/samara/discount/service/DiscountServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discount-service/src/main/java/com/samara/discount/service/bo.discount/DiscountResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/discount-service/src/main/java/com/samara/discount/service/bo.discount/DiscountResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discount-service/src/main/java/com/samara/discount/service/service/DiscountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/discount-service/src/main/java/com/samara/discount/service/service/DiscountServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/discount-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/discount-service/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/discount-service/target/classes/com/samara/discount/service/model/DiscountEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/discount-service/target/classes/com/samara/discount/service/model/DiscountEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discount-service/target/classes/com/samara/discount/service/DiscountServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/discount-service/target/classes/com/samara/discount/service/DiscountServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discount-service/target/classes/com/samara/discount/service/bo/discount/DiscountResponse$DiscountResponseBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/discount-service/target/classes/com/samara/discount/service/bo/discount/DiscountResponse$DiscountResponseBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discount-service/target/classes/com/samara/discount/service/bo/discount/DiscountResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/discount-service/target/classes/com/samara/discount/service/bo/discount/DiscountResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discount-service/target/classes/com/samara/discount/service/service/DiscountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/discount-service/target/classes/com/samara/discount/service/service/DiscountServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inventory-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/samara/inventory/service/InventoryServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/samara/inventory/service/InventoryServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/samara/inventory/service/bo/inventory/InventoryResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/samara/inventory/service/bo/inventory/InventoryResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/samara/inventory/service/service/InventoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/samara/inventory/service/service/InventoryServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inventory-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/samara/order/service/config/WebClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/java/com/samara/order/service/config/WebClientConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/ProductServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/ProductServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/bo/category/CategoryResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/bo/category/CategoryResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/bo/discount/DiscountResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/bo/discount/DiscountResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/bo/inventory/InventoryResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/bo/inventory/InventoryResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/bo/product/ProductResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/bo/product/ProductResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/service/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/service/ProductServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shared-library/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +54,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -102,7 +113,7 @@
     "Spring Boot.ProductServiceApplication (1).executor": "Run",
     "Spring Boot.ProductServiceApplication.executor": "Run",
     "Spring Boot.UserServiceApplication.executor": "Run",
-    "git-widget-placeholder": "swagger-document",
+    "git-widget-placeholder": "redis",
     "jdk.selected.JAVA_MODULE": "corretto-17",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "M:/Ecommerce-backend/EcommerceServices/discount-service/src/main/java/com/samara/discount/service",
@@ -128,17 +139,17 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="M:\Ecommerce-backend\EcommerceServices\discount-service\src\main\java\com\samara\discount\service" />
+      <recent name="M:\Ecommerce-backend\EcommerceServices\shared-library\src\main\java\com\samara\shared" />
       <recent name="M:\Ecommerce-backend\EcommerceServices\order-service\src\main\java\com\samara\order\service\bo" />
       <recent name="M:\Ecommerce-backend\EcommerceServices\order-service" />
       <recent name="M:\Ecommerce-backend\EcommerceServices\cart-service\src\main\java\com\samara\cart\service\bo" />
-      <recent name="M:\Ecommerce-backend\EcommerceServices\eureka-service" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.samara.discount.service.config" />
+      <recent name="com.samara.shared.config" />
       <recent name="com.samara.product.service.bo.product" />
       <recent name="com.samara.cart.service.bo.cartItem" />
       <recent name="com.samara.cart.service.repository" />
-      <recent name="com.samara.cart.service.bo.product" />
-      <recent name="com.samara.cart.service.bo.cart" />
     </key>
   </component>
   <component name="RunAnythingCache">

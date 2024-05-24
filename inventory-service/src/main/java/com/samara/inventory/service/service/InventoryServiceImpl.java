@@ -6,6 +6,8 @@ import com.samara.inventory.service.bo.inventory.UpdateInventoryRequest;
 import com.samara.inventory.service.mapper.Mapper;
 import com.samara.inventory.service.model.InventoryEntity;
 import com.samara.inventory.service.repository.InventoryRepository;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -22,11 +24,13 @@ public class InventoryServiceImpl implements InventoryService {
         this.mapper = mapper;
     }
 
+    @Cacheable(value = "inventoryCache", unless = "#result.isEmpty()")
     @Override
     public List<InventoryResponse> inventories() {
         return inventoryRepository.findAll().stream().map(mapper::InventoryEntityToResponse).toList();
     }
 
+    @Cacheable(value = "inventoryCache", key = "'inventory:'+#id")
     @Override
     public InventoryResponse inventory(Long id) {
         InventoryEntity inventory = inventoryRepository.findById(id)
@@ -34,6 +38,7 @@ public class InventoryServiceImpl implements InventoryService {
         return mapper.InventoryEntityToResponse(inventory);
     }
 
+    @CacheEvict(value = "inventoryCache", allEntries = true)
     @Override
     public InventoryResponse addInventory(CreateInventoryRequest createInventoryRequest) {
 
@@ -42,6 +47,7 @@ public class InventoryServiceImpl implements InventoryService {
         return mapper.InventoryEntityToResponse(inventoryEntity);
     }
 
+    @CacheEvict(value = "inventoryCache", key = "'inventory:'+#id", allEntries = true)
     @Override
     public InventoryResponse updateInventory(UpdateInventoryRequest updateInventoryRequest, Long id) {
         InventoryEntity inventoryEntity = inventoryRepository.findById(id)
@@ -57,6 +63,7 @@ public class InventoryServiceImpl implements InventoryService {
         existingInventory.setModifiedAt(LocalDateTime.now());
     }
 
+    @CacheEvict(value = "inventoryCache", allEntries = true)
     @Override
     public InventoryResponse deleteInventory(Long id) {
         InventoryEntity inventory = inventoryRepository.findById(id)

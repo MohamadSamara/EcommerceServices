@@ -4,6 +4,7 @@ import com.samara.category.service.bo.category.CategoryResponse;
 import com.samara.category.service.bo.category.CreateCategoryRequest;
 import com.samara.category.service.bo.category.UpdateCategoryRequest;
 import com.samara.category.service.service.CategoryService;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/category")
+@RequestMapping("/api/v1/category")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -44,6 +45,13 @@ public class CategoryController {
     public ResponseEntity<String> deleteCategory(@PathVariable Long id) {
         categoryService.deleteCategory(id);
         return new ResponseEntity<>(id + " Id Category Deleted Successfully", HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping("/clear")
+    @CacheEvict(value = "categoryCache", allEntries = true)
+    public void clearCache() {
+        System.out.println("Cache cleared");
+        System.out.println();
     }
 
 }

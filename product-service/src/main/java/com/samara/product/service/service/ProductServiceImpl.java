@@ -7,6 +7,8 @@ import com.samara.product.service.bo.product.UpdateProductRequest;
 import com.samara.product.service.mapper.Mapper;
 import com.samara.product.service.model.ProductEntity;
 import com.samara.product.service.repository.ProductRepository;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -24,6 +26,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
+    @Cacheable(value = "productCache", unless = "#result.isEmpty()")
     @Override
     public List<ProductResponse> products() {
         return productRepository.findAll().stream()
@@ -31,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
                 .toList();
     }
 
-
+    @Cacheable(value = "productCache", key = "'product:'+#id")
     @Override
     public ProductResponse productById(Long id) {
         ProductEntity productEntity = productRepository.findById(id)
@@ -39,6 +42,7 @@ public class ProductServiceImpl implements ProductService {
         return mapper.EntityToProductResponse(productEntity);
     }
 
+    @CacheEvict(value = "productCache", allEntries = true)
     @Override
     public ProductResponse saveProduct(CreateProductRequest productRequest) {
         productRequest.setCreatedAt(LocalDateTime.now());
@@ -64,6 +68,7 @@ public class ProductServiceImpl implements ProductService {
         return price * (discountPercent / 100);
     }
 
+    @CacheEvict(value = "productCache", allEntries = true)
     @Override
     public void deleteProduct(Long id) {
         ProductEntity productToDelete = productRepository.findById(id)
@@ -73,6 +78,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
+    @CacheEvict(value = "productCache", key = "'product:'+#id", allEntries = true)
     @Override
     public ProductResponse updateProduct(Long id, UpdateProductRequest updateProductRequest) {
         ProductEntity existingProduct = productRepository.findById(id).

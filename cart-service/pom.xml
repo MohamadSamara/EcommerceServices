@@ -57,6 +57,12 @@
             <version>2.5.0</version>
         </dependency>
 
+        <!--    Because I Added shared-library As A Dependency, So No Need To Add Security And JWT Dependency Because They Are Already in shared-library   -->
+        <dependency>
+            <groupId>com.samara</groupId>
+            <artifactId>shared-library</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 

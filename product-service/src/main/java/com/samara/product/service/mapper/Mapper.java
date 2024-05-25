@@ -124,7 +124,7 @@ public class Mapper {
                 categoryWebClient.get()
                         .uri(
                                 uriBuilder -> uriBuilder
-                                        .path("/api/v1/category/{id}")
+                                        .path("/{id}")
                                         .build(productEntityId)
                         )
                         .retrieve()

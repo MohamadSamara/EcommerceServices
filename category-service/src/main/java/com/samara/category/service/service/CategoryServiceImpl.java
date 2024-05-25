@@ -84,7 +84,7 @@ public class CategoryServiceImpl implements CategoryService {
 }
     /*
     * If We Want to update using opsForValue instead of @CacheEvict(value = "categoryCache", key = "#id") :
-    * But this way not Effective
+    * (Note : But this way not Effective)
 
     @Override
     public CategoryResponse updateCategory(Long id, UpdateCategoryRequest updateCategoryRequest) {

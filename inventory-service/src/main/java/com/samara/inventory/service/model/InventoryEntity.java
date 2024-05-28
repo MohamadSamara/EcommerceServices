@@ -24,7 +24,7 @@ public class InventoryEntity {
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
-    @Column(name = "quantity")
+    @Column(name = "quantity", nullable = false)
     private Long quantity;
 
     @Column(name = "created_at")

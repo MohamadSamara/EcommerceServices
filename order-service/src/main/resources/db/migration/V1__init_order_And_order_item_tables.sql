@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS mst_order
 (
-id 					BIGINT PRIMARY KEY,
+id 					BIGSERIAL PRIMARY KEY,
 user_id 			BIGINT NOT NULL,
 total_price			FLOAT NOT NULL CHECK (total_price >= 0),
 created_at 			TIMESTAMP NOT NULL DEFAULT CURRENT_DATE,
@@ -10,7 +10,7 @@ deleted_at 			TIMESTAMP
 
 CREATE TABLE IF NOT EXISTS mst_order_item
 (
-id 					BIGINT PRIMARY KEY,
+id 					BIGSERIAL PRIMARY KEY,
 product_id	  		BIGINT NOT NULL,
 order_id 			BIGINT NOT NULL,
 quantity 			INTEGER NOT NULL,

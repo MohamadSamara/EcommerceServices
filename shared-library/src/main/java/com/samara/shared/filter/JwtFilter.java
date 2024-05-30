@@ -20,8 +20,11 @@ import java.security.Key;
 @Slf4j
 public class JwtFilter extends OncePerRequestFilter {
 
-    private static final String SIGNING_KEY = "5131ae6d5ed68eec897c6f2e3681097b373f4059c26a93b00d7ed1530a651fc5";
+    private final String signingKey;
 
+    public JwtFilter(String signingKey) {
+        this.signingKey = signingKey;
+    }
 
     @Override
     public void doFilterInternal(
@@ -70,7 +73,7 @@ public class JwtFilter extends OncePerRequestFilter {
     }
 
     private Key getSigningKey() {
-        byte[] keyByte = Decoders.BASE64.decode(SIGNING_KEY);
+        byte[] keyByte = Decoders.BASE64.decode(signingKey);
         return Keys.hmacShaKeyFor(keyByte);
     }
 }

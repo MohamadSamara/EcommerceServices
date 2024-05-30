@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS mst_product
 (
-    id              BIGINT NOT NULL PRIMARY KEY,
+    id              BIGSERIAL NOT NULL PRIMARY KEY,
     name        	VARCHAR (255) NOT NULL,
     description	    VARCHAR (255) NOT NULL,
     category_id 	BIGINT NOT NULL,

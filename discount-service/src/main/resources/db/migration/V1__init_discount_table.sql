@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS mst_discount
 (
-    id 					BIGINT NOT NULL PRIMARY KEY,
+    id 					BIGSERIAL NOT NULL PRIMARY KEY,
     name				VARCHAR (255) NOT NULL UNIQUE,
     description 		VARCHAR (255) NOT NULL,
     discount_percent    FLOAT NOT NULL,

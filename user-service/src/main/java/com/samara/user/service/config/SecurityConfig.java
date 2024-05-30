@@ -25,6 +25,9 @@ public class SecurityConfig {
 
     private static final List<String> ALLOWED_METHODS = Arrays.asList("GET", "PUT", "POST", "DELETE", "OPTIONS", "PATCH");
     private static final List<String> ALLOWED_HEADERS = Arrays.asList("authorization", "Content-Type", "Authorization");
+    private static final String SWAGGER_UI_HTML_PAGE = "/swagger-ui.html";
+    private static final String SWAGGER_UI_PATH = "/swagger-ui/**";
+    private static final String DOCS_PATH = "/api-docs/**";
     public static final String AUTH_PATH = "/api/v1/auth/**";
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
@@ -44,6 +47,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         req -> req
                                 .requestMatchers(AUTH_PATH).permitAll()
+                                .requestMatchers(SWAGGER_UI_PATH).permitAll()
+                                .requestMatchers(SWAGGER_UI_HTML_PAGE).permitAll()
+                                .requestMatchers(DOCS_PATH).permitAll()
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session

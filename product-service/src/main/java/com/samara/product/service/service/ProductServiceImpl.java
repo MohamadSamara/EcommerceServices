@@ -65,7 +65,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     private double calculatePriceAfterDiscount(double price, double discountPercent) {
-        return price * (discountPercent / 100);
+        if (price < 0 || discountPercent < 0 || discountPercent > 100) {
+            throw new IllegalArgumentException("Price and discount percent must be non-negative and discount percent must be less than or equal to 100");
+        }
+        double discountAmount = price * (discountPercent / 100);
+        return price - discountAmount;
     }
 
     @CacheEvict(value = "productCache", allEntries = true)

@@ -4,37 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bed7f33a-5d18-435a-939c-5003aa77f959" name="Changes" comment="test and enhance the code of order service">
-      <change afterPath="$PROJECT_DIR$/cart-service/src/main/resources/db/migration/V1__init_cart_And_cart_item_tables.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/category-service/src/main/resources/db/migration/V1__init_category_table.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/discount-service/src/main/resources/db/migration/V2__init_discount_table.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/resources/db/migration/V1__init_inventory_table.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order-service/src/main/resources/db/migration/V1__init_order_And_order_item_tables.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/resources/db/migration/V1__int_product_table.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/src/main/resources/db/migration/V1__init_user_tabel.sql" afterDir="false" />
+    <list default="true" id="bed7f33a-5d18-435a-939c-5003aa77f959" name="Changes" comment="comment clear cache endpoint">
+      <change afterPath="$PROJECT_DIR$/shared-library/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/samara/cart/service/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/java/com/samara/cart/service/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cart-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/resources/db/migration/V1__init_cart_And_cart_item_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/src/main/resources/db/migration/V1__init_cart_And_cart_item_tables.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cart-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cart-service/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/category-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/category-service/src/main/java/com/samara/category/service/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/src/main/java/com/samara/category/service/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/category-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/category-service/src/main/resources/db/migration/V1__init_category_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/src/main/resources/db/migration/V1__init_category_table.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/category-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/discount-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/discount-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/category-service/target/classes/com/samara/category/service/controller/CategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/category-service/target/classes/com/samara/category/service/controller/CategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discount-service/src/main/java/com/samara/discount/service/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/discount-service/src/main/java/com/samara/discount/service/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/discount-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/discount-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discount-service/src/main/resources/db/migration/V1__init_discount_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/discount-service/src/main/resources/db/migration/V1__init_discount_table.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/discount-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/discount-service/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/samara/inventory/service/model/InventoryEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/samara/inventory/service/model/InventoryEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/samara/inventory/service/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/samara/inventory/service/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inventory-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/resources/db/migration/V1__init_inventory_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/resources/db/migration/V1__init_inventory_table.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inventory-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory-service/target/classes/com/samara/inventory/service/model/InventoryEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/target/classes/com/samara/inventory/service/model/InventoryEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/samara/order/service/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/java/com/samara/order/service/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/resources/db/migration/V1__init_order_And_order_item_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/resources/db/migration/V1__init_order_And_order_item_tables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/service/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/service/ProductServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/resources/db/migration/V1__int_product_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/resources/db/migration/V1__int_product_table.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared-library/src/main/java/com/samara/shared/filter/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared-library/src/main/java/com/samara/shared/filter/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/samara/user/service/config/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/samara/user/service/config/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/samara/user/service/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/samara/user/service/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/db/migration/V1__init_user_tabel.sql" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/db/migration/V1__init_user_tabel.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/com/samara/user/service/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/target/classes/com/samara/user/service/config/SecurityConfig.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,42 +86,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.EcommerceServices [clean,install].executor": "Run",
-    "Maven.EcommerceServices [clean,verify].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ApiGatewayApplication.executor": "Run",
-    "Spring Boot.CartServiceApplication.executor": "Run",
-    "Spring Boot.CategoryServiceApplication.executor": "Run",
-    "Spring Boot.DiscountServiceApplication.executor": "Run",
-    "Spring Boot.EurekaServiceApplication.executor": "Run",
-    "Spring Boot.InventoryServiceApplication.executor": "Run",
-    "Spring Boot.OrderServiceApplication.executor": "Run",
-    "Spring Boot.ProductServiceApplication (1).executor": "Run",
-    "Spring Boot.ProductServiceApplication.executor": "Run",
-    "Spring Boot.UserServiceApplication.executor": "Run",
-    "git-widget-placeholder": "flyway",
-    "jdk.selected.JAVA_MODULE": "corretto-17",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "M:/Ecommerce-backend/EcommerceServices/inventory-service/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Problems",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.configurations.included.in.services": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.EcommerceServices [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.EcommerceServices [clean,verify].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CartServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CategoryServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.DiscountServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EurekaServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.InventoryServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.OrderServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ProductServiceApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ProductServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.UserServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;check&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-17&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;M:/Ecommerce-backend/EcommerceServices/shared-library/src/main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -129,11 +131,11 @@
       <recent name="com.samara.order.service.model" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="M:\Ecommerce-backend\EcommerceServices\shared-library\src\main" />
       <recent name="M:\Ecommerce-backend\EcommerceServices\inventory-service\src\main\resources" />
       <recent name="M:\Ecommerce-backend\EcommerceServices\discount-service\src\main\resources" />
       <recent name="M:\Ecommerce-backend\EcommerceServices\product-service\src\main\resources" />
       <recent name="M:\Ecommerce-backend\EcommerceServices\inventory-service\src\main\java\com\samara\inventory\service" />
-      <recent name="M:\Ecommerce-backend\EcommerceServices\shared-library\src\main\java\com\samara\shared" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.samara.order.service.config" />
@@ -256,6 +258,7 @@
       <workItem from="1716184980156" duration="15923000" />
       <workItem from="1716281355548" duration="1131000" />
       <workItem from="1716284839315" duration="12862000" />
+      <workItem from="1717057083288" duration="8054000" />
     </task>
     <task id="LOCAL-00001" summary="Create Order Service (CRUD)">
       <option name="closed" value="true" />
@@ -273,7 +276,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716560337985</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="comment clear cache endpoint">
+      <option name="closed" value="true" />
+      <created>1717052041014</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717052041014</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,16 +294,12 @@
     <MESSAGE value="Create Cart Service (CRUD)" />
     <MESSAGE value="Change Cart Service (table and relation)" />
     <MESSAGE value="Add Redis For Microservices (Some Of the Classes Commented .. Because I Will Try To Make All Config In Shared Library Later)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Redis For Microservices (Some Of the Classes Commented .. Because I Will Try To Make All Config In Shared Library Later)" />
+    <MESSAGE value="comment clear cache endpoint" />
+    <option name="LAST_COMMIT_MESSAGE" value="comment clear cache endpoint" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/service/ProductServiceImpl.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/product-service/src/main/java/com/samara/product/service/mapper/Mapper.java</url>
           <line>33</line>

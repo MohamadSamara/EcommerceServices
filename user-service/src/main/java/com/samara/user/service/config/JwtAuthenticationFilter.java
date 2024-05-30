@@ -52,10 +52,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         USER_NAME = username;
         // validate Jwt
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            // SecurityContextHolder.getContext().getAuthentication() == null That's mean the user is not yet authenticate
-            // Because if he is authenticated I don't need to do all the validate process again
+            // SecurityContextHolder.getContext().getAuthentication() == null That's mean the user is not yet authenticated
+            // Because if he is authenticated I don't need to do all the validated process again
 
-            // check if the user already exist in my DB
+            // check if the user already exists in my DB
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
             // check if the token still valid
             if (jwtService.isTokenValid(jwt, userDetails)) {

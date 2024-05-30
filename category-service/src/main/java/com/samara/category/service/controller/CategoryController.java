@@ -47,11 +47,11 @@ public class CategoryController {
         return new ResponseEntity<>(id + " Id Category Deleted Successfully", HttpStatus.ACCEPTED);
     }
 
-    @GetMapping("/clear")
-    @CacheEvict(value = "categoryCache", allEntries = true)
-    public void clearCache() {
-        System.out.println("Cache cleared");
-        System.out.println();
-    }
+//    @GetMapping("/clear")
+//    @CacheEvict(value = "categoryCache", allEntries = true)
+//    public void clearCache() {
+//        System.out.println("Cache cleared");
+//        System.out.println();
+//    }
 
 }
